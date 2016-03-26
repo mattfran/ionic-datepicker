@@ -13,7 +13,8 @@ angular.module('ionic-datepicker.provider', [])
       templateType: 'popup',
       showTodayButton: false,
       closeOnSelect: false,
-      disableWeekdays: []
+      disableWeekdays: [],
+      calendarTitle: 'Select date'
     };
 
     this.configDatePicker = function (inputObj) {
@@ -69,6 +70,8 @@ angular.module('ionic-datepicker.provider', [])
           $scope.mainObj.callback($scope.selctedDateEpoch);
           if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
             $scope.popup.close();
+          } else if ($scope.mainObj.templateType.toLowerCase() == 'dropdown') {
+
           } else {
             closeModal();
           }
@@ -270,6 +273,8 @@ angular.module('ionic-datepicker.provider', [])
             cssClass: 'ionic_datepicker_popup',
             buttons: buttons
           });
+        } else if ($scope.mainObj.templateType.toLowerCase() == 'dropdown') {
+
         } else {
           openModal();
         }
