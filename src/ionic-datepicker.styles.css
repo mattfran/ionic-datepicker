@@ -160,6 +160,8 @@
 .ionic_datepicker_modal .date_col {
   height: 50px;
   line-height: 50px;
+}
+.ionic_datepicker_modal .date_cell {
   cursor: pointer;
 }
 .ionic_datepicker_modal .font_bold {
