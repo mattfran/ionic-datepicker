@@ -40,6 +40,9 @@
 .ionic_datepicker_popup .popup-body {
   background-color: #ffffff;
 }
+.ionic_datepicker_popup .date_cell {
+  cursor: pointer;
+}
 .ionic_datepicker_popup .popup-body .selected_date_full {
   background-color: #55BBDE;
   margin: -10px -10px 0 -10px;
@@ -160,9 +163,6 @@
 .ionic_datepicker_modal .date_col {
   height: 50px;
   line-height: 50px;
-}
-.ionic_datepicker_modal .date_cell {
-  cursor: pointer;
 }
 .ionic_datepicker_modal .font_bold {
   font-weight: bold;
