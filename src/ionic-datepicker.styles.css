@@ -17,13 +17,13 @@
 .ionic_datepicker_popup .calendar_grid {
   height: 215px;
 }
-.ionic_datepicker_popup .today {
+/*.ionic_datepicker_popup .today {
   border: 1px solid #55BBDE;
   border-radius: 50%;
-}
+}*/
 .ionic_datepicker_popup .selected_date {
   background-color: #55BBDE;
-  border-radius: 50%;
+  border-radius: 3px;
   color: #fff;
   font-weight: bold;
 }
@@ -160,6 +160,7 @@
 .ionic_datepicker_modal .date_col {
   height: 50px;
   line-height: 50px;
+  cursor: pointer;
 }
 .ionic_datepicker_modal .font_bold {
   font-weight: bold;
