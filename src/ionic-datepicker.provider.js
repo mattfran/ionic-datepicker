@@ -281,6 +281,11 @@ angular.module('ionic-datepicker.provider', [])
         }
       };
 
+      // Close the datepicker
+      provider.closeDatePicker = function () {
+        $scope.popup.close();
+      };
+
       return provider;
 
     }];
