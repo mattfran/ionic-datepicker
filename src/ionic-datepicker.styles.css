@@ -193,6 +193,7 @@
 }
 .ionic_datepicker_popover .header .title, .ionic_datepicker_popover .header .button, .ionic_datepicker_popover .footer .title, .ionic_datepicker_popover .footer .button {
   color: #ffffff;
+  font-weight: bold;
 }
 .ionic_datepicker_popover .footer .button-block {
   margin: 0;
@@ -243,7 +244,12 @@
   cursor: pointer;
   height: 30px;
   line-height: 30px;
+  border-radius: 3px;
 }
+
+/*.ionic_datepicker_popover .date_cell {*/
+/*}*/
+
 .ionic_datepicker_popover .font_bold {
   font-weight: bold;
 }
