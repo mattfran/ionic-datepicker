@@ -165,8 +165,9 @@
   padding-right: 5px;
 }
 .ionic_datepicker_modal .date_col {
-  height: 50px;
-  line-height: 50px;
+  cursor: pointer;
+  height: 30px;
+  line-height: 30px;
 }
 .ionic_datepicker_modal .font_bold {
   font-weight: bold;
@@ -239,8 +240,9 @@
   padding-right: 5px;
 }
 .ionic_datepicker_popover .date_col {
-  height: 50px;
-  line-height: 50px;
+  cursor: pointer;
+  height: 30px;
+  line-height: 30px;
 }
 .ionic_datepicker_popover .font_bold {
   font-weight: bold;
