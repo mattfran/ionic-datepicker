@@ -204,7 +204,7 @@ angular.module('ionic-datepicker.provider', [])
         $scope.modal = modal;
       });
 
-      $ionicPopover.fromTemplateUrl('ionic-datepicker-modal.html', {
+      $ionicPopover.fromTemplateUrl('ionic-datepicker-popover.html', {
         scope: $scope
       }).then(function (popover) {
         $scope.popover = popover;
@@ -233,6 +233,10 @@ angular.module('ionic-datepicker.provider', [])
 
       $scope.closeIonicDatePickerModal = function () {
         closeModal();
+      };
+
+      $scope.closeIonicDatePickerPopover = function () {
+        closePopover();
       };
 
       //Open datepicker popup
