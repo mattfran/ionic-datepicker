@@ -21,7 +21,7 @@ angular.module('ionic-datepicker.provider', [])
       angular.extend(config, inputObj);
     };
 
-    this.$get = ['$rootScope', '$ionicPopup', '$ionicModal', 'IonicDatepickerService', function ($rootScope, $ionicPopup, $ionicModal, IonicDatepickerService) {
+    this.$get = ['$rootScope', '$ionicPopup', '$ionicPopover', '$ionicModal', 'IonicDatepickerService', function ($rootScope, $ionicPopup, $ionicPopover, $ionicModal, IonicDatepickerService) {
 
       var provider = {};
 
@@ -70,8 +70,8 @@ angular.module('ionic-datepicker.provider', [])
           $scope.mainObj.callback($scope.selctedDateEpoch);
           if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
             $scope.popup.close();
-          } else if ($scope.mainObj.templateType.toLowerCase() == 'dropdown') {
-
+          } else if ($scope.mainObj.templateType.toLowerCase() == 'popover') {
+            closePopover();
           } else {
             closeModal();
           }
@@ -86,6 +86,7 @@ angular.module('ionic-datepicker.provider', [])
         if ($scope.mainObj.closeOnSelect) {
           $scope.mainObj.callback($scope.selctedDateEpoch);
           closeModal();
+          closePopover();
         }
       };
 
@@ -93,6 +94,7 @@ angular.module('ionic-datepicker.provider', [])
       $scope.setIonicDatePickerDate = function () {
         $scope.mainObj.callback($scope.selctedDateEpoch);
         closeModal();
+        closePopover();
       };
 
       //Setting the disabled dates list.
@@ -202,8 +204,17 @@ angular.module('ionic-datepicker.provider', [])
         $scope.modal = modal;
       });
 
+      $ionicPopover.fromTemplateUrl('ionic-datepicker-popup.html', {
+        scope: $scope,
+        cssClass: 'ionic_datepicker_popup',
+        buttons: buttons
+      }).then(function (popover) {
+        $scope.popover = popover;
+      });
+
       $scope.$on('$destroy', function () {
         $scope.modal.remove();
+        $scope.popover.remove();
       });
 
       function openModal() {
@@ -212,6 +223,14 @@ angular.module('ionic-datepicker.provider', [])
 
       function closeModal() {
         $scope.modal.hide();
+      }
+
+      function openPopover() {
+        $scope.popover.show();
+      }
+
+      function closePopover() {
+        $scope.popover.hide();
       }
 
       $scope.closeIonicDatePickerModal = function () {
@@ -274,8 +293,8 @@ angular.module('ionic-datepicker.provider', [])
             cssClass: 'ionic_datepicker_popup',
             buttons: buttons
           });
-        } else if ($scope.mainObj.templateType.toLowerCase() == 'dropdown') {
-
+        } else if ($scope.mainObj.templateType.toLowerCase() == 'popover') {
+          openPopover();
         } else {
           openModal();
         }
@@ -284,6 +303,7 @@ angular.module('ionic-datepicker.provider', [])
       // Close the datepicker
       provider.closeDatePicker = function () {
         $scope.popup.close();
+        closePopover();
       };
 
       return provider;
