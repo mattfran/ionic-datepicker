@@ -85,16 +85,22 @@ angular.module('ionic-datepicker.provider', [])
         $scope.selctedDateEpoch = resetHMSM(today).getTime();
         if ($scope.mainObj.closeOnSelect) {
           $scope.mainObj.callback($scope.selctedDateEpoch);
-          closeModal();
-          closePopover();
+          if ($scope.mainObj.templateType.toLowerCase() == 'popover') {
+            closePopover();
+          } else {
+            closeModal();
+          }
         }
       };
 
       //Set date for the modal
       $scope.setIonicDatePickerDate = function () {
         $scope.mainObj.callback($scope.selctedDateEpoch);
-        closeModal();
-        closePopover();
+        if ($scope.mainObj.templateType.toLowerCase() == 'popover') {
+          closePopover();
+        } else {
+          closeModal();
+        }
       };
 
       //Setting the disabled dates list.
@@ -211,8 +217,11 @@ angular.module('ionic-datepicker.provider', [])
       });
 
       $scope.$on('$destroy', function () {
-        $scope.modal.remove();
-        $scope.popover.remove();
+        if ($scope.mainObj.templateType.toLowerCase() == 'popover') {
+          $scope.popover.remove();
+        } else {
+          $scope.modal.remove();
+        }
       });
 
       function openModal() {
@@ -304,8 +313,13 @@ angular.module('ionic-datepicker.provider', [])
 
       // Close the datepicker
       provider.closeDatePicker = function () {
-        $scope.popup.close();
-        closePopover();
+        if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
+          $scope.popup.close();
+        } else if ($scope.mainObj.templateType.toLowerCase() == 'popover') {
+          closePopover();
+        } else {
+          closeModal();
+        }
       };
 
       return provider;
