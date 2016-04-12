@@ -232,8 +232,8 @@ angular.module('ionic-datepicker.provider', [])
         $scope.modal.hide();
       }
 
-      function openPopover($event) {
-        $scope.popover.show($event);
+      function openPopover(targetElementOrEvent) {
+        $scope.popover.show(targetElementOrEvent);
       }
 
       function closePopover() {
@@ -249,7 +249,7 @@ angular.module('ionic-datepicker.provider', [])
       };
 
       //Open datepicker popup
-      provider.openDatePicker = function (ipObj, $event) {
+      provider.openDatePicker = function (ipObj, targetElementOrEvent) {
         var buttons = [];
         $scope.mainObj = angular.extend({}, config, ipObj);
         if ($scope.mainObj.from) {
@@ -305,7 +305,7 @@ angular.module('ionic-datepicker.provider', [])
             buttons: buttons
           });
         } else if ($scope.mainObj.templateType.toLowerCase() == 'popover') {
-          openPopover($event);
+          openPopover(targetElementOrEvent);
         } else {
           openModal();
         }
