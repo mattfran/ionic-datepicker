@@ -233,7 +233,7 @@ angular.module('ionic-datepicker.provider', [])
       }
 
       function openPopover(targetElementOrEvent) {
-        $scope.popover.show(targetElementOrEvent);
+        $scope.popover.show(angular.element(document.querySelector(targetElementOrEvent)));
       }
 
       function closePopover() {
